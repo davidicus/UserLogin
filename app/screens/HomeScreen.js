@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import ViewContainer from '../components/ViewContainer';
-// import styles from '../styles/styles.js';
+import styles from '../styles/Styles.js';
 
 class HomeScreen extends Component {
   constructor (props) {
@@ -20,21 +20,6 @@ class HomeScreen extends Component {
   }
 }
 
-const styles = StyleSheet.create ({
-  //Home Screen Styles
-  home: {
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    padding: 20,
-    paddingTop: 40,
-  },
 
-  homeHeaderText: {
-    color: 'coral',
-  },
-});
 
 module.exports = HomeScreen;

@@ -3,13 +3,12 @@ import React, { Component } from 'react';
 import { ActivityIndicator ,StyleSheet, Text, TextInput, View, TouchableHighlight, Navigator } from 'react-native';
 //import of firebase along with the reference to the projects fb database
 import firebase, { app } from '../firebase';
-// import styles from '../styles/styles.js';
-import firebaseUtils from '../utils/firebaseUtils';
+import styles from '../styles/Styles.js';
+// import firebaseUtils from '../utils/firebaseUtils';
 import ViewContainer from '../components/ViewContainer';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import Spinner from 'react-native-loading-spinner-overlay';
-import LoginScreen from '../screens/LoginScreen';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="queue" size={30} color="#555" />)
@@ -128,65 +127,5 @@ class SignUpScreen extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  viewContainer: {
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    padding: 20,
-    paddingTop: 40,
-  },
-
-  loginHeading: {
-    fontSize: 20,
-  },
-
-  loginInput: {
-    height: 50,
-    marginTop: 10,
-    padding: 4,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48bbec'
-  },
-
-  loginButton: {
-    height: 50,
-    backgroundColor: '#48BBEC',
-    alignSelf: 'stretch',
-    marginTop: 10,
-    justifyContent: 'center'
-  },
-
-  loginButtonText: {
-    fontSize: 22,
-    color: '#FFF',
-    alignSelf: 'center'
-  },
-
-  transparentLoginButton: {
-    height: 50,
-    alignSelf: 'stretch',
-    marginTop: 10,
-    justifyContent: 'center'
-  },
-
-  transparentLoginButtonText: {
-    fontSize: 22,
-    color: '#555',
-    alignSelf: 'center'
-  },
-
-  loginError: {
-    color: 'red',
-    paddingTop: 10
-  },
-
-  loginLoader: {
-    marginTop: 20
-  },
-});
 
 module.exports = SignUpScreen;
