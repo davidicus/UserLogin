@@ -70,14 +70,14 @@ var genErrorMsg = function(e) {
 }
 
 var firebaseUtils = {
-  createUser: function(user, cb) {
-    ref.createUser(user, function(err) {
+  createUser: (user, cb) => {
+    ref.createUser(user, (err) => {
       if (err) {
         var message = genErrorMsg(err);
         console.log(message);
         cb(message);
       } else {
-          this.loginWithPW(user, function(authData){
+          this.loginWithPW(user, (authData) => {
             addNewUserToFB({
               email: user.email,
               uid: authData.uid,

@@ -1,7 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { Navigator, StyleSheet } from 'react-native';
-// import styles from '../styles/styles.js';
+import styles from '../styles/Styles.js';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
@@ -40,9 +40,5 @@ class AppNavigator extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-
-});
 
 module.exports = AppNavigator;
