@@ -8,14 +8,14 @@ import ViewContainer from '../components/ViewContainer';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import Spinner from 'react-native-loading-spinner-overlay';
-import SignUpScreen from '../screens/SignUpScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="queue" size={30} color="#555" />)
 
 let app = new Firebase("your app url");
 
-class LoginScreen extends Component {
+class SignUpScreen extends Component {
   constructor (props) {
     super(props);
 
@@ -30,7 +30,7 @@ class LoginScreen extends Component {
   render () {
    return (
     <ViewContainer style={styles.viewContainer}>
-      <Header text='Login' image='cloud-done' />
+      <Header text='Sign Up' image='add-circle' />
       <TextInput
         onChangeText={ (text)=> this.setState({email: text}) }
         style={styles.loginInput}
@@ -45,14 +45,14 @@ class LoginScreen extends Component {
         secureTextEntry={true}>
       </TextInput>
       <Button
-        text="Log into Account"
-        onPress={this._login.bind(this)}
+        text="Create Account"
+        onPress={this._signup.bind(this)}
         button_styles={styles.loginButton}
         button_text_styles={styles.loginButtonText}
       />
       <Button
-        text="Need an Account?"
-        onPress={this._goToSignUp.bind(this)}
+        text="Have an Account?"
+        onPress={this._goToLogin.bind(this)}
         button_styles={styles.transparentLoginButton}
         button_text_styles={styles.transparentLoginButtonText}
       />
@@ -65,38 +65,59 @@ class LoginScreen extends Component {
    );
   }
 
-  _goToSignUp (){
-    this.props.navigator.push({
-      ident: 'SignUpScreen'
-    });
+  _goToLogin (){
+    this.props.navigator.pop();
   }
 
-  _login () {
+  _signup () {
     this.setState({
       loaded: false
     });
-    app.authWithPassword({
-      email: this.state.email,
-      password: this.state.password
-    }, (err, authData) => {
-      if (err) {
-        alert('Login Failed!', err);
+    app.createUser({
+      'email': this.state.email,
+      'password': this.state.password
+    }, (error, userData) => {
+      if(error){
+        switch(error.code){
+
+          case "EMAIL_TAKEN":
+            alert("The new user account cannot be created because the email is already in use.");
+          break;
+
+          case "INVALID_EMAIL":
+            alert("The specified email is not a valid email.");
+          break;
+
+          default:
+            alert("There has been in error updating an account: "+JSON.stringify(error));
+            console.error(error);
+        }
+
       } else {
-        console.log("Authenticated successfully with payload:", authData);
-        var key = authData.uid;
-        app.child('user').child(key).set(authData);
-        this._navigateToHome();
+        alert('Your account was created!');
+        app.authWithPassword({
+          email: this.state.email,
+          password: this.state.password
+        }, function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with payload:", authData);
+            var key = authData.uid;
+            app.child('user').child(key).set(authData);
+            this._navigateToHome();
+          }
+        })
+
+        //
       }
-    });
-    var st = () => {
+
       this.setState({
         email: '',
         password: '',
         loaded: true
       });
-    }
-    setTimeout(st, 500);
-
+    });
   }
 
   _navigateToHome () {
@@ -167,4 +188,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = LoginScreen;
+module.exports = SignUpScreen;
