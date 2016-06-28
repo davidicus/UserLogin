@@ -1,9 +1,10 @@
 'use strict';
 import React, { Component } from 'react';
 import { ActivityIndicator ,StyleSheet, Text, TextInput, View, TouchableHighlight, Navigator } from 'react-native';
-import Firebase from 'firebase';
+//import of firebase along with the reference to the projects fb database
+import firebase, { app } from '../firebase';
 // import styles from '../styles/styles.js';
-// import firebaseUtils from '../utils/firebaseUtils';
+import firebaseUtils from '../utils/firebaseUtils';
 import ViewContainer from '../components/ViewContainer';
 import Button from '../components/Button';
 import Header from '../components/Header';
@@ -13,7 +14,7 @@ import LoginScreen from '../screens/LoginScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="queue" size={30} color="#555" />)
 
-let app = new Firebase("https://usercreation.firebaseio.com");
+
 
 class SignUpScreen extends Component {
   constructor (props) {
@@ -98,7 +99,7 @@ class SignUpScreen extends Component {
         app.authWithPassword({
           email: this.state.email,
           password: this.state.password
-        }, function(error, authData) {
+        }, (error, authData) => {
           if (error) {
             console.log("Login Failed!", error);
           } else {
