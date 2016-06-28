@@ -1,9 +1,10 @@
 'use strict';
 import React, { Component } from 'react';
-import { Navigator } from 'react-native';
-import HomeScreen from '../screens/HomeScreen'
-import ScreenOne from '../screens/ScreenOne'
-import ScreenTwo from '../screens/ScreenTwo'
+import { Navigator, StyleSheet } from 'react-native';
+// import styles from '../styles/styles.js';
+import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
+
 
 class AppNavigator extends Component {
 
@@ -12,27 +13,13 @@ class AppNavigator extends Component {
 
     switch (route.ident) {
       case 'HomeScreen':
-        return (
-          <HomeScreen {...globalNavigatorProps} />
-        )
+        return ( <HomeScreen {...globalNavigatorProps} /> )
 
-      case 'Login':
-        return (
-          <Login {...globalNavigatorProps} />
-        )
-
-      case 'ScreenOne':
-        return (
-          <ScreenOne {...globalNavigatorProps} />
-        )
-
-      case 'ScreenTwo':
-        return (
-          <ScreenTwo {...globalNavigatorProps} />
-        )
+      case 'LoginScreen':
+        return ( <LoginScreen {...globalNavigatorProps} /> )
 
       default:
-        return (<HomeScreen {...globalNavigatorProps} />)
+        return (<LoginScreen {...globalNavigatorProps} />)
     }
   }
 
@@ -49,5 +36,9 @@ class AppNavigator extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  
+});
 
 module.exports = AppNavigator;

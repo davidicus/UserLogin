@@ -1,8 +1,8 @@
 'use strict';
 import React, { Component } from 'react';
-import { AppRegistry} from 'react-native';
-import Firebase from 'firebase';
-import styles from './app/styles/styles.js';
+import { AppRegistry, StyleSheet} from 'react-native';
+import AppNavigator from './app/navigation/AppNavigator'
+// import styles from './app/styles/styles.js';
 
 class UserLogin extends Component {
   constructor (props) {
@@ -20,7 +20,7 @@ class UserLogin extends Component {
       );
     } else {
       return (
-        <AppNavigator initialRoute={{ident: 'Login'}} />
+        <AppNavigator initialRoute={{ident: 'LoginScreen'}} />
       );
     }
   }
