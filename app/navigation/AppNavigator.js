@@ -4,6 +4,7 @@ import { Navigator, StyleSheet } from 'react-native';
 // import styles from '../styles/styles.js';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 
 class AppNavigator extends Component {
@@ -17,6 +18,9 @@ class AppNavigator extends Component {
 
       case 'LoginScreen':
         return ( <LoginScreen {...globalNavigatorProps} /> )
+
+      case 'SignUpScreen':
+        return ( <SignUpScreen {...globalNavigatorProps} /> )
 
       default:
         return (<LoginScreen {...globalNavigatorProps} />)
@@ -38,7 +42,7 @@ class AppNavigator extends Component {
 }
 
 const styles = StyleSheet.create({
-  
+
 });
 
 module.exports = AppNavigator;

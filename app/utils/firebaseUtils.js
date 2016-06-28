@@ -1,5 +1,5 @@
 var Firebase = require('firebase');
-var forge = "";
+var forge = "usercreation.firebaseio.com";
 var ref = new Firebase(forge);
 var cachedUser = null;
 
