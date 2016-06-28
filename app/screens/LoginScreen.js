@@ -12,7 +12,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const myIcon = (<Icon name="rocket" size={30} color="#900" />)
 
-let app = new Firebase("https://usercreation.firebaseio.com");
+let app = new Firebase("YOUR_APP_URL");
 
 class LoginScreen extends Component {
   constructor (props) {
