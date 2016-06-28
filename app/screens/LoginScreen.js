@@ -1,7 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { ActivityIndicator ,StyleSheet, Text, TextInput, View, TouchableHighlight, Navigator } from 'react-native';
-import Firebase from 'firebase';
+import firebase, { app } from '../firebase';
 // import styles from '../styles/styles.js';
 // import firebaseUtils from '../utils/firebaseUtils';
 import ViewContainer from '../components/ViewContainer';
@@ -13,7 +13,6 @@ import SignUpScreen from '../screens/SignUpScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="queue" size={30} color="#555" />)
 
-let app = new Firebase("https://usercreation.firebaseio.com");
 
 class LoginScreen extends Component {
   constructor (props) {
